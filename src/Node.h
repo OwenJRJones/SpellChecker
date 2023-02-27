@@ -9,6 +9,7 @@ struct Node {
     std::string m_data{"NULL"};
     NodePtr m_left{nullptr};
     NodePtr m_right{nullptr};
+    int m_height{0};
 };
 
 #endif //ASSIGNMENT_3_NODE_H
