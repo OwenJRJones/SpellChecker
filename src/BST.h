@@ -9,7 +9,7 @@ class BST {
 private:
     NodePtr m_root{nullptr};
 
-    void insert(std::string &, NodePtr &);
+    NodePtr insert(std::string &, NodePtr &);
 
     void print_tree(std::ostream &, NodePtr &, int);
 
@@ -18,13 +18,13 @@ public:
 
     int max(int, int);
 
-    void insert(std::string &);
+    int balance_factor(NodePtr &);
 
     NodePtr rotate_right(NodePtr &);
 
     NodePtr rotate_left(NodePtr &);
 
-    int balance_factor(NodePtr &);
+    void insert(std::string &);
 
     static int compare(std::string &, NodePtr &);
 

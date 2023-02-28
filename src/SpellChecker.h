@@ -9,9 +9,13 @@ private:
 public:
     ~SpellChecker();
 
+    void check_words(std::string &, std::string &, std::string &);
+
     void read_dictionary(std::string &);
 
-    void check_words(std::string&);
+    std::string remove_chars(std::string &);
+
+    void save_tree(std::string &);
 
     void display_tree();
 };
