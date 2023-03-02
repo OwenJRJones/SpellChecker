@@ -45,7 +45,7 @@ Node::NodePtr BST::rotate_left(NodePtr &x) {
 }
 
 void BST::insert(string &word) {
-    // Use recursive insert function
+    // Use recursive insert function/update root node
     m_root = insert(word, m_root);
 }
 
@@ -55,7 +55,10 @@ Node::NodePtr BST::insert(string &word, NodePtr &node) {
         // Create new node and store data
         node = new Node();
         node->m_data = word;
+
+        // Return new node
         return node;
+
     } else if (word.compare(node->m_data) < 0) {
         // Go left
         node->m_left = insert(word, node->m_left);
@@ -88,6 +91,7 @@ Node::NodePtr BST::insert(string &word, NodePtr &node) {
         return rotate_left(node);
     }
 
+    // Return original node
     return node;
 }
 
@@ -115,8 +119,7 @@ bool BST::find(string &word) {
 
 int BST::compare(string &word, NodePtr &node) {
     // Use string compare() to determine string comparison
-    int result = word.compare(node->m_data);
-    return result;
+    return word.compare(node->m_data);
 }
 
 void BST::print_tree(ostream &output, NodePtr &node, int indent) {
