@@ -65,7 +65,7 @@ string SpellChecker::remove_chars(string &word) {
     // Loop through word and erase special chars
     for (auto i = 0; i < word.size(); i++) {
         if (word[i] < 'A' || word[i] > 'Z' &&
-            word[i] < 'a' || word[i] > 'z') {
+                             word[i] < 'a' || word[i] > 'z') {
             // Erase non alphabetic char
             word.erase(i, 1);
             i--;

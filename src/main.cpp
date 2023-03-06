@@ -3,39 +3,51 @@
 
 using namespace std;
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
 
     SpellChecker sc;
 
     string input_file;
     string output_file = "../output/output.txt";
     string dictionary = "../docs/dictionary.txt";
-    bool use_def = false;
 
-    if (argc < 4) {
-        input_file = argv[1];
-        if (string(argv[2]) == "-d") {
-            use_def = true;
-        }
-    }
+    switch (argc) {
+        case 4:
+            input_file = argv[1];
+            output_file = argv[2];
+            dictionary = argv[3];
+            break;
+        case 3:
+            input_file = argv[1];
+            output_file = argv[2];
+            break;
+        case 2:
+            input_file = argv[1];
+            break;
+        default:
+            // Prompt user for file name(s) if not given
+            cout << "Incorrect number / improper file types specified." << endl;
 
-    // Prompt user for filename if one was not given, then open/read file
-    if (argc < 4 && !use_def) {
-        cout << "Incorrect number / improper file types specified." << endl;
+            cout << "Please specify relative path to input file: ";
+            getline(cin, input_file);
 
-        cout << "Please specify input file: ";
-        getline(cin, input_file);
+            string input;
 
-        cout << "Please specify output file: ";
-        getline(cin, output_file);
+            cout << "Please specify relative path to output file or '-d'"
+                 << " for default output file: ";
+            getline(cin, input);
 
-        cout << "Please specify dictionary file: ";
-        getline(cin, dictionary);
+            if (input != "-d") {
+                output_file = input;
+            }
 
-    } else if (argc == 4){
-        input_file = argv[1];
-        output_file = argv[2];
-        dictionary = argv[3];
+            cout << "Please specify relative path to dictionary file or '-d'"
+                 << " for default dictionary file: ";
+            getline(cin, input);
+
+            if (input != "-d") {
+                dictionary = input;
+            }
     }
 
     // Run SpellCheck
