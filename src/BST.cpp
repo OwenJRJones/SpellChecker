@@ -126,12 +126,12 @@ void BST::print_tree(ostream &output, NodePtr &node, int indent) {
     // Recursive printing function
     if (node != nullptr) {
         // Pass in right side first
-        print_tree(output, node->m_right, indent + 4);
+        print_tree(output, node->m_right, indent + 8);
         // Add current node to output
         output << setw(indent + node->m_data.length());
         output << node->m_data << endl;
         // Pass in left side
-        print_tree(output, node->m_left, indent + 4);
+        print_tree(output, node->m_left, indent + 8);
     }
 }
 
